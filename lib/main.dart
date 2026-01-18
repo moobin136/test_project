@@ -20,8 +20,8 @@ class MyApp extends StatelessWidget {
       locale: Locale('ur', 'PK'),
       fallbackLocale: Locale('eu', 'US'),
       debugShowCheckedModeBanner: false,
-      initialRoute: AppPages.login,
-      getPages: AppPages.routes,
+      initialRoute: AppRoute.login,
+      getPages: AppRoute.routes,
     );
   }
 }
