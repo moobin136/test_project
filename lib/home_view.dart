@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:test_project/size_config.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -8,13 +9,22 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Language Change'),
+        title: Text(
+          'Language Change',
+          style: TextStyle(fontSize: 22.sp),
+        ),
       ),
       body: Column(
         children: [
           ListTile(
-            title: Text('message'.tr),
-            subtitle: Text('fatherName'.tr),
+            title: Text(
+              'message'.tr,
+              style: TextStyle(fontSize: 20.sp),
+            ),
+            subtitle: Text(
+              'fatherName'.tr,
+              style: TextStyle(fontSize: 18.sp),
+            ),
           ),
           Row(
             children: [
