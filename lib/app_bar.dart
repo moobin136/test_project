@@ -15,9 +15,6 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       //     scaffoldKye.currentState!.openDrawer();
       //   },
       // ),
-      bottom: AppBar(
-        backgroundColor: Colors.blueGrey,
-      ),
     );
   }
 
@@ -49,7 +46,7 @@ class MyCustomDrawer extends StatelessWidget {
                 borderRadius: BorderRadius.circular(28), color: Colors.amber),
             child: const Padding(
               padding: EdgeInsets.all(20.0),
-              child: Text('Moobin'),
+              child: const Text('Moobin'),
             ),
           )
         ],
