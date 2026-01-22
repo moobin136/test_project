@@ -1,24 +1,58 @@
+// ── Controller ───────────────────────────────────────────────
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_project/core/constant/app_images.dart';
-
-import '../../../routes/routes.dart';
+import 'package:test_project/routes/routes.dart';
+import '../presentation/model/onboarding_model.dart';
 
 class OnboardingController extends GetxController {
-  RxList<String> pages = [
-    AppImages.onImageOne,
-    AppImages.onImageTow,
-    AppImages.onImageThree,
-  ].obs;
+  final PageController pageController = PageController(initialPage: 0);
+  final RxInt currentIndex = 0.obs;
 
-  
+  //!List of Item
+  final List<OnboardingModel> onboardingList = [
+    OnboardingModel(
+      text: 'Discover New People While You Travel Daily.',
+      description:
+          'Discover people around you on your daily commute whether for dating, networking, or just a friendly chat.',
+      imagePth: AppImages.onImageOne,
+    ),
+    OnboardingModel(
+      text: 'Slide, Match, and Start Talking Right Away.',
+      description:
+          'Slide to show interest. Only mutual slides open the door to conversation no pressure, no awkwardness.',
+      imagePth: AppImages.onImageTow, // ← tow → two corrected
+    ),
+    OnboardingModel(
+      text: 'Reconnect with People from Your Last Ride.',
+      description:
+          'Check in, see who’s nearby even connect with people you shared the same train with even after the ride ends.',
+      imagePth: AppImages.onImageThree,
+    ),
+  ];
 
-  RxInt currentPage = 0.obs;
+  @override
+  void onInit() {
+    super.onInit();
+    pageController.addListener(() {
+      currentIndex.value = pageController.page?.round() ?? 0;
+    });
+  }
+
+  @override
+  void onClose() {
+    pageController.dispose();
+    super.onClose();
+  }
 
   void nextPage() {
-    if (currentPage.value < 2) {
-      currentPage.value++;
-    } else {
-      Get.offAllNamed(AppRoutes.instal);
-    }
+    pageController.nextPage(
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.linear,
+    );
+  }
+
+  void goToLogin() {
+    Get.offNamed(AppRoutes.login);
   }
 }

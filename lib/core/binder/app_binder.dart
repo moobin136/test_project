@@ -7,6 +7,7 @@ class AppBinder extends Bindings {
   @override
   void dependencies() {
     Get.put(SplashController());
+    Get.lazyPut<OnboardingController>(() => OnboardingController());
     // Get.lazyPut(() => OnboardingController());
     // Get.lazyPut(() => SplashController(),);
   }
