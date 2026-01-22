@@ -1,25 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:test_project/core/binder/app_binder.dart';
+import 'package:test_project/core/constant/app_colors.dart';
+import 'package:test_project/routes/routes.dart';
 
-import 'home_page.dart';
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Slide extends StatelessWidget {
+  const Slide({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      
-      debugShowCheckedModeBanner: true,
-      title: 'Flutter Demo',
+    return GetMaterialApp(
+      initialRoute: AppRoutes.instal,
+      getPages: AppRoutes.pages,
+      debugShowCheckedModeBanner: false,
+      initialBinding: AppBinder(),
       themeMode: ThemeMode.light,
-      darkTheme: ThemeData(),
       theme: ThemeData(
-        colorScheme: ColorScheme.light(
-            brightness: Brightness.light, onSurface: Colors.black),
-        useMaterial3: true,
-      ),
-      color: Colors.amber,
-      home: const HomePage(),
+          brightness: Brightness.light,
+          scaffoldBackgroundColor: AppColors.primary),
     );
   }
 }
