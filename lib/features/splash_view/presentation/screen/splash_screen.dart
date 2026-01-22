@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_project/core/constant/app_colors.dart';
 import 'package:test_project/core/constant/app_images.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -7,6 +8,7 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.primary,
       body: Center(
         child: Image.asset(
           AppImages.appLogo,

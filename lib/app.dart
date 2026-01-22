@@ -17,7 +17,7 @@ class Slide extends StatelessWidget {
       themeMode: ThemeMode.light,
       theme: ThemeData(
           brightness: Brightness.light,
-          scaffoldBackgroundColor: AppColors.primary),
+          scaffoldBackgroundColor: AppColors.white),
     );
   }
 }
