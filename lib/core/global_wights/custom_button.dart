@@ -47,7 +47,7 @@ class CustomContainerButton extends StatelessWidget {
     this.width,
     this.height = 48.0,
     this.color = AppColors.primary,
-    this.padding = const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
+    this.padding = const EdgeInsets.symmetric(horizontal: 24.0, vertical: 13.0),
     this.margin = EdgeInsets.zero,
     this.borderRadius = 12.0,
     this.boxShadow,
