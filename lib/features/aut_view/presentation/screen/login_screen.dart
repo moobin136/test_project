@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_project/features/aut_view/controller/login_controller.dart';
+import 'package:test_project/routes/routes.dart';
 
 class LoginScreen extends GetView<LoginController> {
   const LoginScreen({super.key});
@@ -30,7 +31,7 @@ class LoginScreen extends GetView<LoginController> {
               controller: controller.emailController,
               keyboardType: TextInputType.emailAddress,
               decoration: const InputDecoration(
-                border:  OutlineInputBorder(),
+                border: OutlineInputBorder(),
                 hintText: 'E-mail',
                 labelText: 'E-mail',
               ),
@@ -50,36 +51,42 @@ class LoginScreen extends GetView<LoginController> {
             const SizedBox(height: 24),
 
             // Login Button with Loading
-            Obx(() => SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                    ),
-                    onPressed:
-                        controller.isLoading.value ? null : controller.loginApi,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 12),
-                      child: controller.isLoading.value
-                          ? const SizedBox(
-                              height: 24,
-                              width: 24,
-                              child: CircularProgressIndicator(
-                                color: Colors.white,
-                                strokeWidth: 2,
-                              ),
-                            )
-                          : const Text(
-                              'Login Now',
-                              style: TextStyle(fontSize: 20),
-                            ),
+            Obx(
+              () => SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
                     ),
                   ),
-                )),
+                  onPressed:
+                      controller.isLoading.value ? null : controller.loginApi,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    child: controller.isLoading.value
+                        ? const SizedBox(
+                            height: 24,
+                            width: 24,
+                            child: CircularProgressIndicator(
+                              color: Colors.white,
+                              strokeWidth: 2,
+                            ),
+                          )
+                        : const Text(
+                            'Login Now',
+                            style: TextStyle(fontSize: 20),
+                          ),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
+            TextButton(
+                onPressed: () => Get.toNamed(AppRoutes.home),
+                child: Text('FaveIcon'))
           ],
         ),
       ),
