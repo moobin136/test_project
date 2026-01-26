@@ -21,7 +21,7 @@ class OnboardingController extends GetxController {
       text: 'Slide, Match, and Start Talking Right Away.',
       description:
           'Slide to show interest. Only mutual slides open the door to conversation no pressure, no awkwardness.',
-      imagePth: AppImages.onImageTow, // ← tow → two corrected
+      imagePth: AppImages.onImageTow,
     ),
     OnboardingModel(
       text: 'Reconnect with People from Your Last Ride.',
