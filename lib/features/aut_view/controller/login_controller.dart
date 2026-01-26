@@ -1,33 +1,53 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
 import 'package:test_project/routes/routes.dart';
 
 class LoginController extends GetxController {
-  final emailController = TextEditingController().obs;
-  final passwordController = TextEditingController().obs;
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
-  Future loginApi() async {
+  // Reactive loading state
+  final RxBool isLoading = false.obs;
+
+  Future<void> loginApi() async {
+    // Validation: empty fields
+    if (emailController.text.isEmpty || passwordController.text.isEmpty) {
+      Get.snackbar('Error', 'Email & Password are required');
+      return;
+    }
+
     try {
-      final responseCode =
-          await post(Uri.parse('https://reqres.in/api/app-users/login'), body: {
-        'email': emailController.value.text,
-        'project_id': passwordController.value.text
-      });
+      isLoading.value = true;
 
-      var data = jsonDecode(responseCode.body);
-      print(responseCode.statusCode);
-      print(data);
-      if (responseCode.statusCode == 200) {
-        Get.toNamed(AppRoutes.home);
-        Get.snackbar('Login Success Full', 'Success');
+      final response = await http.post(
+        Uri.parse('https://reqres.in/api/login'),
+        body: {
+          'email': emailController.text.trim(),
+          'password': passwordController.text,
+        },
+      );
+
+      final data = jsonDecode(response.body);
+
+      if (response.statusCode == 200) {
+        Get.offNamed(AppRoutes.home);
+        Get.snackbar('Login Success', 'Welcome!',);
       } else {
-        Get.snackbar('Login Field', 'data error');
+        Get.snackbar('Login Failed', data['error'] ?? 'Invalid credentials');
       }
     } catch (e) {
-      Get.snackbar('Exaction', e.toString());
+      Get.snackbar('Exception', e.toString());
+    } finally {
+      isLoading.value = false;
     }
+  }
+
+  @override
+  void onClose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.onClose();
   }
 }

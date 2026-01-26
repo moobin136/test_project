@@ -11,60 +11,76 @@ class LoginScreen extends GetView<LoginController> {
       appBar: AppBar(
         backgroundColor: Colors.blueGrey,
         centerTitle: true,
-        title: Text('Log IN',
-            style: TextStyle(
-                fontSize: 23,
-                color: Colors.white,
-                fontWeight: FontWeight.w700)),
+        title: const Text(
+          'Log In',
+          style: TextStyle(
+            fontSize: 23,
+            color: Colors.white,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(32),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextField(
-                controller: controller.emailController.value,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'E-mail',
-                    labelText: "E-mail"),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Email Field
+            TextField(
+              controller: controller.emailController,
+              keyboardType: TextInputType.emailAddress,
+              decoration: const InputDecoration(
+                border:  OutlineInputBorder(),
+                hintText: 'E-mail',
+                labelText: 'E-mail',
               ),
-              const SizedBox(height: 16),
-              TextField(
-                controller: controller.passwordController.value,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Password',
-                    labelText: "Password"),
+            ),
+            const SizedBox(height: 16),
+
+            // Password Field
+            TextField(
+              controller: controller.passwordController,
+              obscureText: true, // Password hidden
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: 'Password',
+                labelText: 'Password',
               ),
-              const SizedBox(height: 16),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
+            ),
+            const SizedBox(height: 24),
+
+            // Login Button with Loading
+            Obx(() => SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.black,
-                        elevation: 0,
-                        foregroundColor: Colors.white,
-                        // fixedSize: Size(double.infinity, 26)),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16))),
-                    onPressed: () {
-                      controller.loginApi();
-                      print('Login Now');
-                    },
+                      backgroundColor: Colors.black,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                    ),
+                    onPressed:
+                        controller.isLoading.value ? null : controller.loginApi,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 12),
-                      child: Text(
-                        'Login Now',
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                    )),
-              )
-            ],
-          ),
+                      child: controller.isLoading.value
+                          ? const SizedBox(
+                              height: 24,
+                              width: 24,
+                              child: CircularProgressIndicator(
+                                color: Colors.white,
+                                strokeWidth: 2,
+                              ),
+                            )
+                          : const Text(
+                              'Login Now',
+                              style: TextStyle(fontSize: 20),
+                            ),
+                    ),
+                  ),
+                )),
+          ],
         ),
       ),
     );

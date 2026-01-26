@@ -1,15 +1,14 @@
-// ── Controller ───────────────────────────────────────────────
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:test_project/core/constant/app_images.dart';
-import 'package:test_project/routes/routes.dart';
+
+import '../../../core/constant/app_images.dart';
+import '../../../routes/routes.dart';
 import '../presentation/model/onboarding_model.dart';
 
 class OnboardingController extends GetxController {
   final PageController pageController = PageController(initialPage: 0);
   final RxInt currentIndex = 0.obs;
 
-  //!List of Item
   final List<OnboardingModel> onboardingList = [
     OnboardingModel(
       text: 'Discover New People While You Travel Daily.',
