@@ -41,7 +41,7 @@ class LoginScreen extends GetView<LoginController> {
             // Password Field
             TextField(
               controller: controller.passwordController,
-              obscureText: true, // Password hidden
+              obscureText: true,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: 'Password',
@@ -54,6 +54,7 @@ class LoginScreen extends GetView<LoginController> {
             Obx(
               () => SizedBox(
                 width: double.infinity,
+                height: 50,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.black,
@@ -64,29 +65,40 @@ class LoginScreen extends GetView<LoginController> {
                   ),
                   onPressed:
                       controller.isLoading.value ? null : controller.loginApi,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 12),
-                    child: controller.isLoading.value
-                        ? const SizedBox(
-                            height: 24,
-                            width: 24,
-                            child: CircularProgressIndicator(
-                              color: Colors.white,
-                              strokeWidth: 2,
-                            ),
-                          )
-                        : const Text(
-                            'Login Now',
-                            style: TextStyle(fontSize: 20),
+                  child: controller.isLoading.value
+                      ? const SizedBox(
+                          height: 24,
+                          width: 24,
+                          child: CircularProgressIndicator(
+                            color: Colors.white,
+                            strokeWidth: 3,
                           ),
-                  ),
+                        )
+                      : const Text(
+                          'Login Now',
+                          style: TextStyle(fontSize: 20),
+                        ),
                 ),
               ),
             ),
+
             const SizedBox(height: 16),
+
             TextButton(
-                onPressed: () => Get.toNamed(AppRoutes.home),
-                child: Text('FaveIcon'))
+              onPressed: () => Get.toNamed(AppRoutes.home),
+              child: const Text(
+                'Skip Login (FaveIcon)',
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.w400),
+              ),
+            ),
+            TextButton(
+              onPressed: () => Get.toNamed(AppRoutes.galleryAndCamera),
+              child: const Text(
+                'Camera & Gallery',
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.w400),
+              ),
+            ),
+            // const SizedBox(height: 16),
           ],
         ),
       ),
