@@ -3,5 +3,4 @@ import 'package:test_project/app.dart';
 
 void main() {
   runApp(const Slide());
-
 }
