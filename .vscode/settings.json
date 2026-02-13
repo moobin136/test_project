@@ -2,5 +2,7 @@
     "cSpell.words": [
         "Cusotm",
         "Getx"
-    ]
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "BracketHighlighter.enableExtension": false
 }
