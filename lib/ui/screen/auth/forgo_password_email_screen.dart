@@ -1,8 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:test_project/ui/screen/pin_verfiaciton_screen.dart';
-import 'package:test_project/ui/screen/sinIn_screen.dart';
-import 'package:test_project/ui/screen/sinUp_screen.dart';
+import 'package:test_project/ui/screen/auth/pin_verfiaciton_screen.dart';
+import 'package:test_project/ui/screen/auth/sinIn_screen.dart';
+import 'package:test_project/ui/screen/auth/sinUp_screen.dart';
 import 'package:test_project/ui/util/app_colors.dart';
 import 'package:test_project/ui/widgets/screen_background.dart';
 
@@ -23,7 +23,12 @@ class _ForgotPasswordEmailScreenState extends State<ForgotPasswordEmailScreen> {
       body: ScreenBackground(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(24),
+            padding: EdgeInsets.only(
+              top: 24,
+              left: 24,
+              right: 24,
+              bottom: MediaQuery.of(context).viewInsets.bottom + 24,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

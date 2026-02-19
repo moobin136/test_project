@@ -1,9 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
-import 'package:test_project/ui/screen/setup_password_screen.dart';
+import 'package:test_project/ui/screen/auth/setup_password_screen.dart';
 
-import 'package:test_project/ui/screen/sinIn_screen.dart';
+import 'package:test_project/ui/screen/auth/sinIn_screen.dart';
 
 import 'package:test_project/ui/util/app_colors.dart';
 import 'package:test_project/ui/widgets/screen_background.dart';

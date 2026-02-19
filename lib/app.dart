@@ -15,6 +15,8 @@ class _SlideState extends State<Slide> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
+        colorSchemeSeed: AppColors.themColor,
         useMaterial3: true,
         textTheme: const TextTheme(),
         inputDecorationTheme: _inputDecorationTheme(),

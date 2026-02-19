@@ -13,6 +13,10 @@ dependencies:
 
   # SVG Support
   flutter_svg: ^2.1.0
+
+  #pinput:
+  pinput: 3.0.0
+
   
 
 dev_dependencies:
@@ -25,6 +29,7 @@ flutter:
 
   assets:
     - assets/images/
+
     
     
   # fonts:
