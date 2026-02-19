@@ -15,12 +15,33 @@ class TaskCardWithCount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        child: Text(
-          textAlign: TextAlign.center,
-          '${count}6\n$labelText',
-          style: textThem.titleMedium,
+      color: Colors.white,
+      elevation: 0,
+      child: SizedBox(
+        width: 100,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          child: Column(
+            children: [
+              Text(
+                textAlign: TextAlign.center,
+                '$count',
+                style: textThem.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18,
+                  color: Colors.black,
+                ),
+              ),
+              FittedBox(
+                child: Text(
+                  textAlign: TextAlign.center,
+                  labelText,
+                  style: textThem.titleMedium
+                      ?.copyWith(color: Colors.grey, fontSize: 16),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
