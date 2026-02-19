@@ -45,6 +45,8 @@ class _SlideState extends State<Slide> {
     return InputDecorationTheme(
       fillColor: Colors.white,
       filled: true,
+      hintStyle:
+          Theme.of(context).textTheme.labelLarge?.copyWith(color: Colors.grey),
       border: _inputBorder(),
       errorBorder: _inputBorder(),
       focusedBorder: _inputBorder(),
