@@ -22,12 +22,13 @@ class TaskCardWithCount extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 textAlign: TextAlign.center,
                 '$count',
                 style: textThem.titleMedium?.copyWith(
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.w700,
                   fontSize: 18,
                   color: Colors.black,
                 ),
@@ -37,7 +38,7 @@ class TaskCardWithCount extends StatelessWidget {
                   textAlign: TextAlign.center,
                   labelText,
                   style: textThem.titleMedium
-                      ?.copyWith(color: Colors.grey, fontSize: 16),
+                      ?.copyWith(color: Colors.grey, fontSize: 14),
                 ),
               ),
             ],
