@@ -3,7 +3,6 @@ import 'package:test_project/ui/screen/chancel_screen.dart';
 import 'package:test_project/ui/screen/completd_screen.dart';
 import 'package:test_project/ui/screen/new_screen.dart';
 import 'package:test_project/ui/screen/pending_screen.dart';
-import 'package:test_project/ui/util/app_colors.dart';
 
 import '../widgets/global_appbar.dart';
 
@@ -33,7 +32,7 @@ class _NavbarScreenState extends State<NavbarScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const TMAppbar(),
+      appBar: const TMAppBar(),
       body: _screenList[_selectedIndex],
       bottomNavigationBar: buildNavigationBar(),
     );

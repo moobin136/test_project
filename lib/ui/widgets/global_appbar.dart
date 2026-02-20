@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../screen/auth/sinIn_screen.dart';
 import '../util/app_colors.dart';
 
-class TMAppbar extends StatelessWidget implements PreferredSizeWidget {
-  const TMAppbar({
+class TMAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const TMAppBar({
     super.key,
     this.showLeading = false,
   });

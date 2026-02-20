@@ -14,7 +14,7 @@ class _AppNewTaskScreenState extends State<AppNewTaskScreen> {
     final textThem = Theme.of(context).textTheme;
     return Scaffold(
       backgroundColor: Colors.white70.withOpacity(0.9),
-      appBar: const TMAppbar(),
+      appBar: const TMAppBar(),
       body: SingleChildScrollView(
         reverse: true,
         child: Padding(
