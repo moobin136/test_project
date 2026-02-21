@@ -12,7 +12,7 @@ class CustomTaskCard extends StatefulWidget {
   final TextTheme textThem;
   final String? title;
   final String? subTitle;
-  final dynamic? dateTime;
+  final dynamic dateTime;
 
   @override
   State<CustomTaskCard> createState() => _CustomTaskCardState();
