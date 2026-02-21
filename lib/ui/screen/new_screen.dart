@@ -21,31 +21,32 @@ class _NewScreenState extends State<NewScreen> {
         padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8),
         child: Column(
           children: [
-            _bieldSumarySuction(textThem),
+            _bieldSummarySuction(textThem),
             Expanded(
-                child: ListView.builder(
-              itemCount: 5,
-              itemBuilder: (context, index) {
-                final _dateTime = DateTime.now();
-                final month = _dateTime.month;
-                final day = _dateTime.day;
-                final year = _dateTime.year;
-                return CustomTaskCard(
-                  textThem: textThem,
-                  title: 'Label task',
-                  subTitle: 'Sub title',
-                  dateTime: "$day/$month/$year",
-                );
-              },
-            )),
-            Text('New Screen'),
+              child: ListView.separated(
+                separatorBuilder: (context, index) => const SizedBox(height: 8),
+                itemCount: 5,
+                itemBuilder: (context, index) {
+                  final _dateTime = DateTime.now();
+                  final month = _dateTime.month;
+                  final day = _dateTime.day;
+                  final year = _dateTime.year;
+                  return CustomTaskCard(
+                    textThem: textThem,
+                    title: 'Label task',
+                    subTitle: 'Sub title',
+                    dateTime: "$day/$month/$year",
+                  );
+                },
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 
-  Widget _bieldSumarySuction(TextTheme textThem) {
+  Widget _bieldSummarySuction(TextTheme textThem) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(

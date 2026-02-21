@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CustomTaskCard extends StatelessWidget {
+class CustomTaskCard extends StatefulWidget {
   const CustomTaskCard({
     super.key,
     required this.textThem,
@@ -15,6 +15,11 @@ class CustomTaskCard extends StatelessWidget {
   final dynamic? dateTime;
 
   @override
+  State<CustomTaskCard> createState() => _CustomTaskCardState();
+}
+
+class _CustomTaskCardState extends State<CustomTaskCard> {
+  @override
   Widget build(BuildContext context) {
     return Card(
       color: Colors.white,
@@ -25,15 +30,15 @@ class CustomTaskCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              title.toString(),
-              style: textThem.titleMedium?.copyWith(
+              widget.title.toString(),
+              style: widget.textThem.titleMedium?.copyWith(
                 fontWeight: FontWeight.w600,
               ),
             ),
             const SizedBox(height: 16),
             Text(
-              subTitle.toString(),
-              style: textThem.titleMedium?.copyWith(
+              widget.subTitle.toString(),
+              style: widget.textThem.titleMedium?.copyWith(
                 fontWeight: FontWeight.w400,
                 fontSize: 14,
                 color: const Color(0xFF383838),
@@ -41,8 +46,8 @@ class CustomTaskCard extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Text(
-              dateTime,
-              style: textThem.titleMedium?.copyWith(
+              widget.dateTime,
+              style: widget.textThem.titleMedium?.copyWith(
                 fontWeight: FontWeight.w400,
                 fontSize: 14,
                 color: const Color(0xFF383838),
@@ -52,24 +57,11 @@ class CustomTaskCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(0.5),
-                    borderRadius: BorderRadiusDirectional.circular(20),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 22.0, vertical: 4),
-                    child: Text(
-                      'New',
-                      style: textThem.labelLarge,
-                    ),
-                  ),
-                ),
+                _buildTaskStatusText(),
                 Row(
                   children: [
                     IconButton(
-                      onPressed: () {},
+                      onPressed: onPressedEditDialog,
                       icon: Icon(Icons.edit, color: Colors.green),
                     ),
                     IconButton(
@@ -84,6 +76,56 @@ class CustomTaskCard extends StatelessWidget {
               ],
             )
           ],
+        ),
+      ),
+    );
+  }
+
+  void onPressedEditDialog() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: ['New', 'Completed', 'Chancel', 'Pending'].map(
+                (e) {
+                  return ListTile(
+                    onTap: () {},
+                    title: Text(e),
+                  );
+                },
+              ).toList()),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {},
+              child: Text('Ok'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _onTapDeletButton() {}
+
+  Widget _buildTaskStatusText() {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.grey.withOpacity(0.5),
+        borderRadius: BorderRadiusDirectional.circular(20),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 22.0, vertical: 4),
+        child: Text(
+          'New',
+          style: widget.textThem.labelLarge,
         ),
       ),
     );

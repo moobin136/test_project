@@ -1,17 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:test_project/ui/widgets/custom_task_card.dart';
 
-class ChancelScreen extends StatefulWidget {
+class ChancelScreen extends StatelessWidget {
   const ChancelScreen({super.key});
 
   @override
-  State<ChancelScreen> createState() => _ChancelScreenState();
-}
-
-class _ChancelScreenState extends State<ChancelScreen> {
-  @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('Chancel'),
+    final textThem = Theme.of(context).textTheme;
+    return ListView.separated(
+      separatorBuilder: (context, index) => const SizedBox(height: 8),
+      itemCount: 5,
+      itemBuilder: (context, index) {
+        final _dateTime = DateTime.now();
+        final month = _dateTime.month;
+        final day = _dateTime.day;
+        final year = _dateTime.year;
+        return CustomTaskCard(
+          textThem: textThem,
+          title: 'Label task',
+          subTitle: 'Sub title',
+          dateTime: "$day/$month/$year",
+        );
+      },
     );
   }
 }

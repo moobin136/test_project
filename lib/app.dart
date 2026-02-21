@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:test_project/ui/screen/splash_screen.dart';
 
@@ -14,6 +15,8 @@ class _SlideState extends State<Slide> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
       theme: ThemeData(
         scaffoldBackgroundColor: const Color(0xFFF3F0F0),
         colorSchemeSeed: AppColors.themColor,
