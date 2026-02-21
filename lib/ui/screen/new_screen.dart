@@ -59,8 +59,6 @@ class _NewScreenState extends State<NewScreen> {
               textThem: textThem, labelText: 'Chancel', count: 18),
           TaskCardWithCount(
               textThem: textThem, labelText: 'Pending', count: 20),
-          TaskCardWithCount(
-              textThem: textThem, labelText: 'Pending', count: 20),
         ],
       ),
     );

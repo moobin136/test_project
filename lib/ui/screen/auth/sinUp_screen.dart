@@ -1,7 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:test_project/ui/screen/auth/sinIn_screen.dart';
-import 'package:test_project/ui/screen/auth/sinUp_screen.dart';
 import 'package:test_project/ui/util/app_colors.dart';
 import 'package:test_project/ui/widgets/screen_background.dart';
 
