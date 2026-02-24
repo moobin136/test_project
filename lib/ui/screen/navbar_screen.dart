@@ -34,11 +34,11 @@ class _NavbarScreenState extends State<NavbarScreen> {
     return Scaffold(
       appBar: const TMAppBar(),
       body: _screenList[_selectedIndex],
-      bottomNavigationBar: buildNavigationBar(),
+      bottomNavigationBar: _buildNavigationBar(),
     );
   }
 
-  Widget buildNavigationBar() {
+  Widget _buildNavigationBar() {
     return NavigationBar(
       // backgroundColor: AppColors.themColor.withAlpha(99),
       indicatorColor: Colors.white,
@@ -48,7 +48,7 @@ class _NavbarScreenState extends State<NavbarScreen> {
       destinations: const [
         NavigationDestination(
           icon: Icon(
-            Icons.fiber_new_outlined,
+            Icons.fiber_new_sharp,
           ),
           label: 'New',
         ),
