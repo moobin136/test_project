@@ -22,49 +22,35 @@ class ProfileScreen extends StatelessWidget {
               top: 16,
               right: 16,
               left: 16,
-              bottom: MediaQuery.of(context).viewInsets.bottom + 8,
+              bottom: MediaQuery.of(context).viewInsets.bottom ,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 80),
-                Text(
-                  'Update Your Profile',
-                  style: textThem.displaySmall?.copyWith(
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                // _bieldPhotoPicker(textThem: textThem),
+                SizedBox(height: MediaQuery.sizeOf(context).height * 0.07),
+                _bieldTitle(textThem),
                 const SizedBox(height: 8),
                 _bieldPhotoPicker(textThem),
                 const SizedBox(height: 16),
-                TextFormField(
-                  decoration: InputDecoration(hintText: 'Update Profile'),
-                ),
-                const SizedBox(height: 16),
-                TextFormField(
-                  decoration: InputDecoration(hintText: 'First Name'),
-                ),
-                const SizedBox(height: 16),
-                TextFormField(
-                  decoration: InputDecoration(hintText: 'Last Name'),
-                ),
-                const SizedBox(height: 16),
-                TextFormField(
-                  decoration: InputDecoration(hintText: 'Phon Number'),
-                ),
-                const SizedBox(height: 16),
-                TextFormField(
-                  obscureText: true,
-                  decoration: InputDecoration(hintText: 'Password'),
-                ),
+                _bieldUpdateFrom(),
                 const SizedBox(height: 16),
                 ElevatedButton(
-                    onPressed: _onTapUpdate, child: const Text('Update'))
+                  onPressed: _onTapUpdate,
+                  child: const Text('Update'),
+                ),
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Text _bieldTitle(TextTheme textThem) {
+    return Text(
+      'Update Your Profile',
+      style: textThem.displaySmall?.copyWith(
+        fontWeight: FontWeight.w500,
       ),
     );
   }
@@ -114,6 +100,33 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
           ),
+        ),
+      ],
+    );
+  }
+
+  Widget _bieldUpdateFrom() {
+    return Column(
+      children: [
+        TextFormField(
+          decoration: InputDecoration(hintText: 'Update Profile'),
+        ),
+        const SizedBox(height: 16),
+        TextFormField(
+          decoration: InputDecoration(hintText: 'First Name'),
+        ),
+        const SizedBox(height: 16),
+        TextFormField(
+          decoration: InputDecoration(hintText: 'Last Name'),
+        ),
+        const SizedBox(height: 16),
+        TextFormField(
+          decoration: InputDecoration(hintText: 'Phon Number'),
+        ),
+        const SizedBox(height: 16),
+        TextFormField(
+          obscureText: true,
+          decoration: InputDecoration(hintText: 'Password'),
         ),
       ],
     );
