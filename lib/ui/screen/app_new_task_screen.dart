@@ -13,7 +13,7 @@ class _AppNewTaskScreenState extends State<AppNewTaskScreen> {
   Widget build(BuildContext context) {
     final textThem = Theme.of(context).textTheme;
     return Scaffold(
-      backgroundColor: Colors.white70.withOpacity(0.9),
+      backgroundColor: const Color(0xFFE9E9E9),
       appBar: const TMAppBar(),
       body: SingleChildScrollView(
         reverse: true,

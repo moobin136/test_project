@@ -16,10 +16,10 @@ class _PendingScreenState extends State<PendingScreen> {
       separatorBuilder: (context, index) => const SizedBox(height: 8),
       itemCount: 5,
       itemBuilder: (context, index) {
-        final _dateTime = DateTime.now();
-        final month = _dateTime.month;
-        final day = _dateTime.day;
-        final year = _dateTime.year;
+        final dateTime = DateTime.now();
+        final month = dateTime.month;
+        final day = dateTime.day;
+        final year = dateTime.year;
         return CustomTaskCard(
           textThem: textThem,
           title: 'Label task',
