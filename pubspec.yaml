@@ -19,6 +19,9 @@ dependencies:
   # api package
   http: ^1.6.0
 
+  #device preview
+  device_preview : 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

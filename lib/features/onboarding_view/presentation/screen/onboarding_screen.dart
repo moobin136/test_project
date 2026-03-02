@@ -27,9 +27,9 @@ class OnboardingScreen extends GetView<OnboardingController> {
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // Image
+                      const Spacer(),
                       Image.asset(item.imagePth),
-                      const SizedBox(height: 86),
+                      const Spacer(),
                       // Text + description
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 37),
