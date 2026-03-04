@@ -17,6 +17,15 @@ dependencies:
   #pinput:
   pinput: 3.0.0
 
+  # GetX for state management and routing
+  get: ^4.6.5
+  
+  # Device Preview for testing on different screen sizes and locales
+  device_preview: 
+  
+
+
+
   
 
 dev_dependencies:
@@ -28,7 +37,7 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/
+    - assets/image/
 
     
     
