@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_project/core/app_images.dart';
+import 'package:test_project/fetureas/home_view/presentation/screen/home_view.dart';
 import 'package:test_project/fetureas/onbord_view/presentation/model/onboarding_model.dart';
 import 'package:test_project/fetureas/onbord_view/presentation/widgets/onboard_wigets.dart';
 import 'package:test_project/routs.dart';
@@ -12,7 +13,8 @@ class OnboardView extends StatefulWidget {
 }
 
 class _OnboardViewState extends State<OnboardView> {
-  late final PageController _pageController;
+  //instal page
+  final _pageController = PageController(initialPage: 0);
   int currentPage = 0;
 
   final List<OnboardingModel> onboardDataList = [
@@ -31,12 +33,22 @@ class _OnboardViewState extends State<OnboardView> {
       'Land Your Next Job Faster with Expert Coaching',
       'Boost your chances of getting hired through tailored mock interviews, professional feedback, and personalized career guidance.',
     ),
+    OnboardingModel(
+      AppImages.imageThree,
+      'Land Your Next Job Faster with Expert Coaching',
+      'Boost your chances of getting hired through tailored mock interviews, professional feedback, and personalized career guidance.',
+    ),
+    OnboardingModel(
+      AppImages.imageThree,
+      'Land Your Next Job Faster with Expert Coaching',
+      'Boost your chances of getting hired through tailored mock interviews, professional feedback, and personalized career guidance.',
+    ),
   ];
 
   @override
   void initState() {
     super.initState();
-    _pageController = PageController();
+    // _pageController = PageController();
   }
 
   @override
@@ -58,12 +70,14 @@ class _OnboardViewState extends State<OnboardView> {
                   controller: _pageController,
                   itemCount: onboardDataList.length,
                   onPageChanged: (index) {
-                    setState(() => currentPage = index);
+                    setState(() {
+                      currentPage = index;
+                    });
                   },
                   itemBuilder: (context, index) {
                     final item = onboardDataList[index];
                     return OnboardingPage(
-                      imagePath: item.imagePath, 
+                      imagePath: item.imagePath,
                       title: item.title,
                       subTitle: item.subTitle,
                     );
@@ -71,26 +85,28 @@ class _OnboardViewState extends State<OnboardView> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 0),
+                padding: const EdgeInsets.only(bottom: 8),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     // Skip button (hide on last page if you want)
                     TextButton(
                       onPressed: () {
-                        Navigator.pushReplacementNamed(
-                          context,
-                          AppRouts.home,
-                        );
+                        if (currentPage == 0) {
+                          Navigator.pushReplacementNamed(
+                              context, AppRouts.home);
+                        } else {
+                          _pageController.previousPage(
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.easeOut,
+                          );
+                        }
                       },
                       child: Text(
-                        currentPage == (onboardDataList.length - 1)
-                            ? ''
-                            : 'Skip',
+                        (currentPage == 0) ? 'Skip' : 'Back',
                         style: const TextStyle(fontSize: 16),
                       ),
                     ),
-
                     Row(
                       children: List.generate(
                         onboardDataList.length,
@@ -98,7 +114,7 @@ class _OnboardViewState extends State<OnboardView> {
                           duration: const Duration(milliseconds: 300),
                           margin: const EdgeInsets.symmetric(horizontal: 4),
                           width: 8,
-                          height: currentPage == index ? 20 : 8,
+                          height: (currentPage == index) ? 20 : 8,
                           decoration: BoxDecoration(
                             color: currentPage == index
                                 ? Theme.of(context).primaryColor
@@ -112,22 +128,24 @@ class _OnboardViewState extends State<OnboardView> {
                     // Next / Get Started
                     TextButton(
                       onPressed: () {
-                        if (currentPage < (onboardDataList.length - 1)) {
-                          _pageController.nextPage(
-                            duration: const Duration(milliseconds: 300),
-                            curve: Curves.easeOut,
-                          );
-                        } else {
-                          // Go to home / sign in
-                          Navigator.pushReplacementNamed(
+                        if (currentPage == (onboardDataList.length - 1)) {
+                          Navigator.pushReplacement(
                             context,
-                            AppRouts.home,
+                            MaterialPageRoute(
+                              builder: (context) => HomeView(),
+                            ),
+                          );
+                          return;
+                        } else {
+                          _pageController.nextPage(
+                            duration: Duration(milliseconds: 500),
+                            curve: Curves.easeOut,
                           );
                         }
                       },
                       child: Text(
-                        currentPage == onboardDataList.length - 1
-                            ? 'Get Started'
+                        (currentPage == (onboardDataList.length - 1))
+                            ? 'Get Start'
                             : 'Next',
                         style: const TextStyle(fontSize: 16),
                       ),
