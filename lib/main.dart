@@ -4,7 +4,7 @@ import 'package:test_project/app.dart';
 
 void main() => runApp(
       DevicePreview(
-        // enabled: !kReleaseMode,
-        builder: (context) => MyApp(), // Wrap your app
+        enabled: true,
+        builder: (context) => MyApp(),
       ),
     );

@@ -21,7 +21,10 @@ dependencies:
   get: ^4.6.5
   
   # Device Preview for testing on different screen sizes and locales
-  device_preview: 
+  device_preview:
+
+  # image_picker
+  image_picker: 1.0.7
   
 
 
