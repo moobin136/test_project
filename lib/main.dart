@@ -4,6 +4,8 @@ import 'package:test_project/app.dart';
 
 void main() {
   runApp(
-    DevicePreview(builder: (context) => const Slide()),
+    DevicePreview(
+      builder: (context) => const Slide(),
+    ),
   );
 }

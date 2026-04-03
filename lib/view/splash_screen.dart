@@ -92,10 +92,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               border: Border.all(width: 1, color: const Color(0x5F636F85)),
               color: const Color(0xFFFFFFFF),
               shape: BoxShape.circle),
-          child: IconButton(
-            onPressed: () {},
-            icon: notificationIconData,
-          ),
+          child: notificationIconData
         ),
         const SizedBox(width: 8),
         Container(
@@ -104,10 +101,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               border: Border.all(width: 1, color: const Color(0x5F636F85)),
               color: const Color(0xFFFFFFFF),
               shape: BoxShape.circle),
-          child: IconButton(
-            onPressed: () {},
-            icon: cutIconData,
-          ),
+          child: cutIconData
         ),
         const SizedBox(width: 3),
       ],
