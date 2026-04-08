@@ -1,7 +1,4 @@
-// To parse this JSON data, do
-//
-//     final comments = commentsFromJson(jsonString);
-
+// geet_comments.dart
 import 'dart:convert';
 
 List<Comments> commentsFromJson(String str) =>
@@ -26,18 +23,18 @@ class Comments {
   });
 
   factory Comments.fromJson(Map<String, dynamic> json) => Comments(
-        postId: json["postId"],
-        id: json["id"],
-        name: json["name"],
-        email: json["email"],
-        body: json["body"],
-      );
+    postId: json["postId"],
+    id: json["id"],
+    name: json["name"],
+    email: json["email"],
+    body: json["body"],
+  );
 
   Map<String, dynamic> toJson() => {
-        "postId": postId,
-        "id": id,
-        "name": name,
-        "email": email,
-        "body": body,
-      };
+    "postId": postId,
+    "id": id,
+    "name": name,
+    "email": email,
+    "body": body,
+  };
 }

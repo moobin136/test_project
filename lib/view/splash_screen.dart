@@ -139,3 +139,113 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
+
+// ✅ Custom SnackBar Helper Class
+class AppSnackBar {
+  // ✅ Success
+  static void showSuccess(BuildContext context, String message) {
+    _show(
+      context,
+      message: message,
+      backgroundColor: const Color(0xFF2E7D32),
+      icon: Icons.check_circle_outline,
+      iconColor: Colors.white,
+    );
+  }
+
+  // ❌ Error
+  static void showError(BuildContext context, String message) {
+    _show(
+      context,
+      message: message,
+      backgroundColor: const Color(0xFFC62828),
+      icon: Icons.error_outline,
+      iconColor: Colors.white,
+    );
+  }
+
+  // ⚠️ Warning
+  static void showWarning(BuildContext context, String message) {
+    _show(
+      context,
+      message: message,
+      backgroundColor: const Color(0xFFF57F17),
+      icon: Icons.warning_amber_rounded,
+      iconColor: Colors.white,
+    );
+  }
+
+  // ℹ️ Info
+  static void showInfo(BuildContext context, String message) {
+    _show(
+      context,
+      message: message,
+      backgroundColor: const Color(0xFF1565C0),
+      icon: Icons.info_outline,
+      iconColor: Colors.white,
+    );
+  }
+
+  // 🔧 Base Method
+  static void _show(BuildContext context,
+      {required String message,
+      required Color backgroundColor,
+      required IconData icon,
+      required Color iconColor,
+      Duration duration = const Duration(seconds: 3),
+      String? actionLabel,
+      VoidCallback? onAction}) {
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(
+        SnackBar(
+          duration: duration,
+          behavior: SnackBarBehavior.floating,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          margin: const EdgeInsets.all(16),
+          content: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            decoration: BoxDecoration(
+              color: backgroundColor,
+              borderRadius: BorderRadius.circular(12),
+              boxShadow: [
+                BoxShadow(
+                  color: backgroundColor.withOpacity(0.4),
+                  blurRadius: 12,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+            ),
+            child: Row(
+              children: [
+                Icon(icon, color: iconColor, size: 24),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Text(
+                    message,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+                if (actionLabel != null)
+                  GestureDetector(
+                    onTap: onAction,
+                    child: Text(
+                      actionLabel,
+                      style: const TextStyle(
+                        color: Colors.yellow,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        ),
+      );
+  }
+}
