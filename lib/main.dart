@@ -5,7 +5,8 @@ import 'package:test_project/app.dart';
 void main() {
   runApp(
     DevicePreview(
-      builder: (context) => const Slide(),
+      enabled: !kReleaseMode,
+builder: (context) => const Slide(),
     ),
   );
 }
